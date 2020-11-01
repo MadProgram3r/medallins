@@ -1,0 +1,90 @@
+package medallins;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import javax.swing.JOptionPane;
+
+
+
+public class Login extends JPanel {
+	public JTextField txtUser;
+	public JTextField txtPassword;
+	ArrayList<Usuarios> usuarios = new ArrayList<Usuarios>();
+	   public static void main(String[] args) {
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						Login panel = new Login();
+						panel.setVisible(true);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+	    }
+	public void anadirUsuarios()
+	{
+		Usuarios usuario1 = new Usuarios();
+		usuario1.Nombre = "Admin";
+		usuario1.Password = "123456789";
+		Usuarios usuario2 = new Usuarios();
+		usuario2.Nombre = "noAdmin";
+		usuario2.Password = "NoSoyElAdmin";
+		usuarios.add(usuario1);
+		usuarios.add(usuario2);
+	}
+	
+	
+	public Login() {
+		setLayout(null);
+		anadirUsuarios();
+		JLabel lblNewLabel = new JLabel("Usuario");
+		lblNewLabel.setBounds(203, 38, 44, 20);
+		add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Contrase\u00F1a");
+		lblNewLabel_1.setBounds(196, 100, 65, 14);
+		add(lblNewLabel_1);
+		
+		txtUser = new JTextField();
+		txtUser.setBounds(185, 69, 86, 20);
+		add(txtUser);
+		txtUser.setColumns(10);
+		
+		txtPassword = new JTextField();
+		txtPassword.setBounds(185, 125, 86, 20);
+		add(txtPassword);
+		txtPassword.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Aceptar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				boolean correcto = false;
+				for(Usuarios user:usuarios) {
+					if(user.comprobar(txtUser.getText(), txtPassword.getText())) {
+						JOptionPane.showMessageDialog(null, "Login correcto");
+						correcto = true;
+						break;
+					}else {
+						correcto = false;
+					}
+				}
+				if(!correcto) {
+					JOptionPane.showMessageDialog(null, "Login incorrecto");
+				} 
+			}
+		});
+		btnNewButton.setBounds(185, 168, 89, 23);
+		add(btnNewButton);
+
+	}
+
+}

@@ -1,0 +1,54 @@
+package medallins;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import medallins.Usuarios;
+import java.awt.event.ActionEvent;
+
+
+
+public class Login extends JPanel {
+	private JTextField textField;
+	private JTextField textField_1;
+	ArrayList<String> usuarios = new ArrayList<String>();
+	/**
+	 * Create the panel.
+	 */
+	public Login() {
+		setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Usuario");
+		lblNewLabel.setBounds(203, 38, 44, 20);
+		add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Contrase\u00F1a");
+		lblNewLabel_1.setBounds(196, 100, 65, 14);
+		add(lblNewLabel_1);
+		
+		textField = new JTextField();
+		textField.setBounds(185, 69, 86, 20);
+		add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(185, 125, 86, 20);
+		add(textField_1);
+		textField_1.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Aceptar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		btnNewButton.setBounds(185, 168, 89, 23);
+		add(btnNewButton);
+
+	}
+}

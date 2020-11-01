@@ -1,0 +1,32 @@
+package multihilos;
+
+public class tareaHilos {
+public static void main(String args[]) {
+	Hilo hilo10 = new Hilo();
+	Thread miHilo = new Thread(hilo10);
+	
+	miHilo.start();
+	try {Thread.sleep(1000);}
+	catch(InterruptedException ex) {ex.printStackTrace(); }
+	for(int x = 11; x <= 20; x++ ) {
+		System.out.println(x);
+	}
+}
+
+
+}
+
+class Hilo implements Runnable{
+	@Override
+	public void run() {
+		try {Thread.sleep(2000);}
+		catch(InterruptedException ex) {ex.printStackTrace(); }
+		contarHasta10();
+	}
+	
+	public void contarHasta10() {
+		for(int x = 1; x <= 10; x++ ) {
+			System.out.println(x);
+		}
+	}
+}

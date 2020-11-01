@@ -1,0 +1,15 @@
+package medallins;
+
+public class Usuarios {
+	private String Nombre;
+	private String Password;
+	
+	private boolean comprobar(String nombre, String password) {
+		if(this.Nombre == nombre && this.Password == password) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+}
